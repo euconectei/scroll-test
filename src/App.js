@@ -49,6 +49,14 @@ function App() {
           onClick={scrollToTop}>
           Top
         </button>
+        {!buttonHidden && (
+          <button
+            data-testid='btn-to-top2'
+            id='button-top2'
+            onClick={scrollToTop}>
+            Top
+          </button>
+        )}
       </header>
     </div>
   );

@@ -8,7 +8,7 @@ import App from "../App";
 global.scrollTo = jest.fn();
 
 describe("testing scroll", () => {
-  it("testing scroll to element", async () => {
+  it("should scroll to element by clicking on ", async () => {
     const scrollIntoViewMock = jest.fn();
     window.HTMLElement.prototype.scrollIntoView = scrollIntoViewMock;
 
@@ -39,5 +39,21 @@ describe("testing scroll", () => {
         });
         expect(btnToTop).toBeVisible();
       });
+  });
+
+  it("testing scroll to top2 visibility", async () => {
+    render(<App />);
+
+    Array.from(Array(100).keys())
+      .map((i) => i + 75)
+      .forEach((scrollY) => {
+        fireEvent.scroll(window, {
+          target: {
+            scrollY,
+          },
+        });
+      });
+    const btnToTop = await screen.findByTestId("btn-to-top2");
+    expect(btnToTop).toBeInTheDocument();
   });
 });
