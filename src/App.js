@@ -47,14 +47,14 @@ function App() {
           data-testid='btn-to-top'
           id='button-top'
           onClick={scrollToTop}>
-          Top
+          Top (shows)
         </button>
         {!buttonHidden && (
           <button
             data-testid='btn-to-top2'
             id='button-top2'
             onClick={scrollToTop}>
-            Top
+            Top (write)
           </button>
         )}
       </header>

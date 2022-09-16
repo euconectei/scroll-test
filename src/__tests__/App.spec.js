@@ -41,7 +41,7 @@ describe("testing scroll", () => {
       });
   });
 
-  it("testing scroll to top2 visibility", async () => {
+  it("testing scroll to top2 write", async () => {
     render(<App />);
 
     Array.from(Array(100).keys())
