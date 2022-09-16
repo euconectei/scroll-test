@@ -54,7 +54,7 @@ function App() {
             data-testid='btn-to-top2'
             id='button-top2'
             onClick={scrollToTop}>
-            Top (write)
+            Top2 (write)
           </button>
         )}
       </header>
