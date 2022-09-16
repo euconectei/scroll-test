@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { fireEvent } from "@testing-library/react";
 
 import App from "../App";
 
@@ -22,5 +23,21 @@ describe("testing scroll", () => {
     const btnToTop = await screen.findByTestId("btn-to-top");
     userEvent.click(btnToTop);
     expect(global.scrollTo).toHaveBeenCalledWith(0, 0);
+  });
+
+  it("testing scroll to top visibility", async () => {
+    render(<App />);
+    const btnToTop = await screen.findByTestId("btn-to-top");
+    expect(btnToTop).not.toBeVisible();
+    Array.from(Array(100).keys())
+      .map((i) => i + 75)
+      .forEach((scrollY) => {
+        fireEvent.scroll(window, {
+          target: {
+            scrollY,
+          },
+        });
+        expect(btnToTop).toBeVisible();
+      });
   });
 });
